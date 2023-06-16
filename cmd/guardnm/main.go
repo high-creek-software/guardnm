@@ -34,7 +34,7 @@ type guardnm struct {
 }
 
 func newGuardnm() *guardnm {
-
+	//os.Setenv("FYNE_THEME", "light")
 	iconRes := fyne.NewStaticResource("icon", iconBytes)
 
 	g := &guardnm{connectionItems: make(map[string]*connectionDisplay)}
