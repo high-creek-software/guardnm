@@ -45,6 +45,11 @@ func newGuardnm() *guardnm {
 	g.manager = connections.NewManager()
 
 	if desk, ok := g.app.(desktop.App); ok {
+
+		g.mainWindow.SetCloseIntercept(func() {
+			g.mainWindow.Hide()
+		})
+
 		g.desk = desk
 		menu := fyne.NewMenu("GuardNM", fyne.NewMenuItem("Show", func() {
 			g.mainWindow.Show()
@@ -61,7 +66,7 @@ func newGuardnm() *guardnm {
 }
 
 func (g *guardnm) start() {
-	g.mainWindow.SetContent(container.NewPadded(container.NewScroll(container.NewBorder(nil, nil, nil, nil, g.box))))
+	g.mainWindow.SetContent(container.NewPadded(container.NewScroll(g.box)))
 	g.startTicker()
 	g.loadConnections()
 	g.mainWindow.ShowAndRun()

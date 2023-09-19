@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=GuardNM
+Comment=A wireguard network manager connection toggler
+Exec=/usr/bin/guardnm
+Icon=guardnm.png
+Type=Application
