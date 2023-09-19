@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	fyne.io/fyne/v2 v2.4.0
-	golang.org/x/exp v0.0.0-20230522175609-2e198f4a06a1
+	github.com/high-creek-software/gooie v0.0.0-20230614025338-8425611a05b3
 )
 
 require (
@@ -36,3 +36,5 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	honnef.co/go/js/dom v0.0.0-20210725211120-f030747120f2 // indirect
 )
+
+replace github.com/high-creek-software/gooie => ../gooie

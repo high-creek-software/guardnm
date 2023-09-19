@@ -1,7 +1,6 @@
 package connections
 
 import (
-	"golang.org/x/exp/maps"
 	"log"
 	"os/exec"
 	"strings"
@@ -38,7 +37,15 @@ func (m *Manager) ListWireguardConnections() []*Connection {
 	cmd = exec.Command("nmcli", "-t", "-f", "name,type", "con", "show", "--active")
 	out, err = cmd.CombinedOutput()
 	if err != nil {
-		return maps.Values(connections)
+		values := make([]*Connection, len(connections))
+		count := 0
+
+		for _, connection := range connections {
+			values[count] = connection
+			count++
+		}
+
+		return values
 	}
 
 	lines = strings.Split(string(out), "\n")
@@ -53,7 +60,15 @@ func (m *Manager) ListWireguardConnections() []*Connection {
 		}
 	}
 
-	return maps.Values(connections)
+	values := make([]*Connection, len(connections))
+	count := 0
+
+	for _, connection := range connections {
+		values[count] = connection
+		count++
+	}
+
+	return values
 }
 
 func (m *Manager) ToggleConnection(c *Connection, turnOn bool) {
